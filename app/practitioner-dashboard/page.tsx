@@ -207,7 +207,7 @@ export default function PractitionerDashboard() {
                     </div>
                     <div className="flex gap-2">
                       <Button className="flex-1" asChild>
-                        <Link href="/video-session">
+                        <Link href="/pre-session">
                           <Video className="h-4 w-4 mr-2" />
                           Start Session
                         </Link>
@@ -283,7 +283,7 @@ export default function PractitionerDashboard() {
                         {session.status === "completed" && <Badge variant="secondary">Completed</Badge>}
                         {session.status === "upcoming" && (
                           <Button size="sm" asChild>
-                            <Link href="/video-session">
+                            <Link href="/pre-session">
                               <Video className="h-4 w-4 mr-2" />
                               Join
                             </Link>

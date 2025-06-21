@@ -177,11 +177,12 @@ export default function AdminDashboard() {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="users">Users</TabsTrigger>
             <TabsTrigger value="practitioners">Practitioners</TabsTrigger>
             <TabsTrigger value="system">System</TabsTrigger>
+            <TabsTrigger value="tech-tests">Tech Tests</TabsTrigger>
             <TabsTrigger value="reports">Reports</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
           </TabsList>
@@ -468,34 +469,293 @@ export default function AdminDashboard() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>System Actions</CardTitle>
+                  <CardTitle>System Actions & Testing</CardTitle>
+                  <CardDescription>System management and technical diagnostic tools</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
-                    <Button className="w-full" variant="outline">
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm text-gray-700">System Management</h4>
+                      <div className="space-y-2">
+                        <Button className="w-full" variant="outline">
+                          <Activity className="h-4 w-4 mr-2" />
+                          System Health Check
+                        </Button>
+                        <Button className="w-full" variant="outline">
+                          <Database className="h-4 w-4 mr-2" />
+                          Database Backup
+                        </Button>
+                        <Button className="w-full" variant="outline">
+                          <Shield className="h-4 w-4 mr-2" />
+                          Security Audit
+                        </Button>
+                        <Button className="w-full" variant="outline">
+                          <Settings className="h-4 w-4 mr-2" />
+                          System Configuration
+                        </Button>
+                        <Button className="w-full" variant="outline">
+                          <FileText className="h-4 w-4 mr-2" />
+                          System Logs
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium mb-2 text-sm text-gray-700">Technical Test Tools</h4>
+                      <div className="space-y-2">
+                        <Button className="w-full" variant="outline" onClick={() => setActiveTab("tech-tests")}>
+                          <Activity className="h-4 w-4 mr-2" />
+                          Video Call Diagnostics
+                        </Button>
+                        <Button className="w-full" variant="outline" onClick={() => setActiveTab("tech-tests")}>
+                          <Database className="h-4 w-4 mr-2" />
+                          Network Performance Test
+                        </Button>
+                        <Button className="w-full" variant="outline" onClick={() => setActiveTab("tech-tests")}>
+                          <Shield className="h-4 w-4 mr-2" />
+                          Audio/Video Quality Test
+                        </Button>
+                        <Button className="w-full" variant="outline" onClick={() => setActiveTab("tech-tests")}>
+                          <Settings className="h-4 w-4 mr-2" />
+                          Browser Compatibility Check
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="tech-tests" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Video Call Diagnostics */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Activity className="h-5 w-5" />
+                    Video Call Diagnostics
+                  </CardTitle>
+                  <CardDescription>Test video calling system components</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">Camera Test</span>
+                        <Badge className="bg-green-500">Passed</Badge>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="bg-green-500 h-2 rounded-full" style={{ width: "100%" }}></div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">Microphone Test</span>
+                        <Badge className="bg-green-500">Passed</Badge>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="bg-green-500 h-2 rounded-full" style={{ width: "95%" }}></div>
+                      </div>
+                    </div>
+
+                    <div className="p-4 bg-gray-50 rounded-lg">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-medium">WebRTC Connection</span>
+                        <Badge className="bg-orange-500">Warning</Badge>
+                      </div>
+                      <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="bg-orange-500 h-2 rounded-full" style={{ width: "78%" }}></div>
+                      </div>
+                    </div>
+
+                    <Button className="w-full">
                       <Activity className="h-4 w-4 mr-2" />
-                      System Health Check
+                      Run Full Video Test
                     </Button>
-                    <Button className="w-full" variant="outline">
-                      <Database className="h-4 w-4 mr-2" />
-                      Database Backup
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Network Performance */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="h-5 w-5" />
+                    Network Performance
+                  </CardTitle>
+                  <CardDescription>Monitor network quality and speed</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-3 bg-blue-50 rounded-lg">
+                        <div className="text-xl font-bold text-blue-600">45.2 Mbps</div>
+                        <div className="text-xs text-gray-600">Download Speed</div>
+                      </div>
+                      <div className="text-center p-3 bg-green-50 rounded-lg">
+                        <div className="text-xl font-bold text-green-600">12.8 Mbps</div>
+                        <div className="text-xs text-gray-600">Upload Speed</div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm">Latency</span>
+                        <span className="text-sm font-bold">23ms</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">Packet Loss</span>
+                        <span className="text-sm font-bold text-green-600">0.1%</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm">Jitter</span>
+                        <span className="text-sm font-bold">2.1ms</span>
+                      </div>
+                    </div>
+
+                    <Button className="w-full">
+                      <TrendingUp className="h-4 w-4 mr-2" />
+                      Run Speed Test
                     </Button>
-                    <Button className="w-full" variant="outline">
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Audio/Video Quality */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Settings className="h-5 w-5" />
+                    Audio/Video Quality
+                  </CardTitle>
+                  <CardDescription>Test media quality and encoding</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Video Resolution</span>
+                        <Badge variant="outline">1080p HD</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Video Bitrate</span>
+                        <span className="text-sm font-bold">2.5 Mbps</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Audio Quality</span>
+                        <Badge className="bg-green-500">Excellent</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Frame Rate</span>
+                        <span className="text-sm font-bold">30 FPS</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Button className="w-full" variant="outline">
+                        <Activity className="h-4 w-4 mr-2" />
+                        Test Camera Quality
+                      </Button>
+                      <Button className="w-full" variant="outline">
+                        <Activity className="h-4 w-4 mr-2" />
+                        Test Microphone Quality
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Browser Compatibility */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Shield className="h-5 w-5" />
+                    Browser Compatibility
+                  </CardTitle>
+                  <CardDescription>Check browser support for video calling</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">WebRTC Support</span>
+                        <Badge className="bg-green-500">Supported</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Screen Sharing</span>
+                        <Badge className="bg-green-500">Supported</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Media Devices API</span>
+                        <Badge className="bg-green-500">Supported</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm">Audio Context</span>
+                        <Badge className="bg-orange-500">Limited</Badge>
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="text-sm font-medium">Current Browser</div>
+                      <div className="text-xs text-gray-600">Chrome 120.0.6099.109</div>
+                      <div className="text-xs text-green-600 mt-1">✓ Fully Compatible</div>
+                    </div>
+
+                    <Button className="w-full">
                       <Shield className="h-4 w-4 mr-2" />
-                      Security Audit
-                    </Button>
-                    <Button className="w-full" variant="outline">
-                      <Settings className="h-4 w-4 mr-2" />
-                      System Configuration
-                    </Button>
-                    <Button className="w-full" variant="outline">
-                      <FileText className="h-4 w-4 mr-2" />
-                      System Logs
+                      Run Compatibility Check
                     </Button>
                   </div>
                 </CardContent>
               </Card>
             </div>
+
+            {/* System-wide Test Results */}
+            <Card>
+              <CardHeader>
+                <CardTitle>System-wide Test Results</CardTitle>
+                <CardDescription>Recent diagnostic test results across the platform</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="grid md:grid-cols-4 gap-4">
+                    <div className="text-center p-4 bg-green-50 rounded-lg">
+                      <div className="text-2xl font-bold text-green-600">98.7%</div>
+                      <div className="text-sm text-gray-600">Video Call Success Rate</div>
+                    </div>
+                    <div className="text-center p-4 bg-blue-50 rounded-lg">
+                      <div className="text-2xl font-bold text-blue-600">1.2s</div>
+                      <div className="text-sm text-gray-600">Avg Connection Time</div>
+                    </div>
+                    <div className="text-center p-4 bg-purple-50 rounded-lg">
+                      <div className="text-2xl font-bold text-purple-600">4.8/5</div>
+                      <div className="text-sm text-gray-600">Audio Quality Rating</div>
+                    </div>
+                    <div className="text-center p-4 bg-orange-50 rounded-lg">
+                      <div className="text-2xl font-bold text-orange-600">0.3%</div>
+                      <div className="text-sm text-gray-600">Technical Issues</div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Button className="w-full" variant="outline">
+                      <FileText className="h-4 w-4 mr-2" />
+                      Export Technical Report
+                    </Button>
+                    <Button className="w-full" variant="outline">
+                      <AlertTriangle className="h-4 w-4 mr-2" />
+                      View Failed Tests
+                    </Button>
+                    <Button className="w-full" variant="outline">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Configure Test Parameters
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </TabsContent>
 
           <TabsContent value="reports" className="space-y-6">
